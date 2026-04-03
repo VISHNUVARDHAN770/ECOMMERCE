@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════╗
+  ║   EassYBuY — Main Entry Point          ║
+  ║   This is the FIRST file the browser    ║
+  ║   loads when you open the project.      ║
+  ╚══════════════════════════════════════════╝
+ 
+  KEYWORDS EXPLAINED:
+  • <!DOCTYPE html>  → Tells browser this is HTML5
+  • <html lang="en"> → Root element, lang sets language
+  • <head>           → Hidden metadata (not shown on page)
+  • <link rel>       → Connects CSS files to this HTML
+  • <script src>     → Connects JS files to this HTML
+  • <body>           → Everything visible on the page
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <!-- UTF-8 = character encoding, supports all languages -->
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- viewport = makes site responsive on mobile -->
+ 
+  <title>EassYBuY — Premium E-Commerce</title>
+ 
+  <!-- Google Fonts: loads beautiful fonts from internet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+ 
+  <!-- ═══ CONNECTING CSS FILES ═══ -->
+  <!-- rel="stylesheet" → tells browser this link is a CSS file -->
+  <!-- href="css/..." → path to the CSS file -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/payment.css">
+  <link rel="stylesheet" href="css/orders.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+ 
+  <!-- ═══════════════════════════════════════ -->
+  <!--   3D ANIMATED BACKGROUND CANVAS       -->
+  <!-- canvas = HTML element for drawing 2D/3D graphics with JavaScript -->
+  <!-- ═══════════════════════════════════════ -->
+  <canvas id="bg-canvas"></canvas>
+ 
+  <!-- ═══════════════════════════════════════ -->
+  <!--   TOAST NOTIFICATION (popup message)  -->
+  <!-- ═══════════════════════════════════════ -->
+  <div id="toast" class="toast hidden">
+    <span id="toast-icon"></span>
+    <span id="toast-text"></span>
+  </div>
+ 
+  <!-- ═══════════════════════════════════════ -->
+  <!--   PAGES — Only 1 page is visible       -->
+  <!--   at a time (controlled by JS)        -->
+  <!-- ═══════════════════════════════════════ -->
+ 
+  <!-- PAGE 1: AUTH (Login / Register) -->
+  <div id="page-auth" class="page active">
+    <!-- Loads content from pages/auth.html via JS -->
+  </div>
+ 
+  <!-- PAGE 2: SHOP (Home / Products) -->
+  <div id="page-shop" class="page">
+  </div>
+ 
+  <!-- PAGE 3: PRODUCT DETAIL -->
+  <div id="page-product" class="page">
+  </div>
+ 
+  <!-- PAGE 4: CART -->
+  <div id="page-cart" class="page">
+  </div>
+ 
+  <!-- PAGE 5: PAYMENT -->
+  <div id="page-payment" class="page">
+  </div>
+ 
+  <!-- PAGE 6: ORDER SUCCESS -->
+  <div id="page-success" class="page">
+  </div>
+ 
+  <!-- PAGE 7: MY ORDERS / TRACKING -->
+  <div id="page-orders" class="page">
+  </div>
+ 
+  <!-- PAGE 8: ADMIN PANEL -->
+  <div id="page-admin" class="page">
+  </div>
+ 
+  <!-- PRODUCT EDIT/ADD MODAL -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal" id="modal-box">
+    </div>
+  </div>
+ 
+  <!-- ═══ CONNECTING JAVASCRIPT FILES ═══ -->
+  <!-- IMPORTANT: Order matters! db.js must load first -->
+  <!-- because other files depend on it -->
+  <!-- defer = loads JS after HTML is fully parsed -->
+  <script src="js/db.js"        defer></script>
+  <script src="js/api.js"       defer></script>
+  <script src="js/auth.js"      defer></script>
+  <script src="js/products.js"  defer></script>
+  <script src="js/cart.js"      defer></script>
+  <script src="js/payment.js"   defer></script>
+  <script src="js/orders.js"    defer></script>
+  <script src="js/admin.js"     defer></script>
+  <script src="js/router.js"    defer></script>
+  <script src="js/background.js" defer></script>
+  <script src="js/main.js"      defer></script>
+ 
+</body>
+</html>
+ 

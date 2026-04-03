@@ -1,0 +1,131 @@
+/*
+  ╔════════════════════════════════════════╗
+  ║  css/navbar.css                       ║
+  ║  Top navigation bar styles            ║
+  ╚════════════════════════════════════════╝
+ 
+  KEYWORDS:
+  • position:sticky  → Navbar stays at top while scrolling
+  • top:0            → Sticks to the very top
+  • z-index          → Higher number = on top of other elements
+  • backdrop-filter  → Blur/glass effect behind element
+  • rgba()           → Color with transparency (r,g,b,alpha)
+*/
+ 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.88);   /* semi-transparent */
+  backdrop-filter: blur(20px);           /* frosted glass effect */
+  -webkit-backdrop-filter: blur(20px);   /* Safari support */
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;        /* logo left, links right */
+  height: 64px;
+}
+ 
+/* Brand Logo */
+.nav-logo {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;  /* makes text show gradient */
+  background-clip: text;
+  cursor: pointer;
+  user-select: none;    /* prevents text selection on click */
+}
+ 
+/* Nav link group */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+ 
+/* Individual nav buttons */
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text2);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+ 
+.nav-btn:hover {
+  color: var(--text);
+  background: var(--bg3);
+}
+ 
+/* Cart button with badge */
+.cart-btn {
+  position: relative;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+}
+ 
+.cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.4);
+}
+ 
+/* Red count badge on cart */
+.cart-count {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background: var(--accent2);
+  color: #fff;
+  font-size: 0.68rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;          /* 50% = circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* ── SEARCH BAR ── */
+
+/* SEARCH BAR */
+
+.navbar-search{
+  display:flex;
+  align-items:center;
+}
+
+.navbar-search input{
+  width:200px;
+  padding:6px 12px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--bg2);
+  color:var(--text);
+  font-family:'Satoshi', sans-serif;
+  font-size:0.85rem;
+}
+
+.navbar-search input:focus{
+  outline:none;
+  border-color:var(--accent);
+}

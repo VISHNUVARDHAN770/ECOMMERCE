@@ -1,0 +1,117 @@
+/*
+  ╔════════════════════════════════════════╗
+  ║  css/animations.css                   ║
+  ║  All @keyframe animations             ║
+  ╚════════════════════════════════════════╝
+ 
+  KEYWORDS:
+  • @keyframes    → Defines an animation sequence
+  • from / to     → Start and end of animation (0% and 100%)
+  • animation     → Applies the keyframe to an element
+  •   name        → which @keyframes to use
+  •   duration    → how long it takes
+  •   timing-func → how it speeds up/slows down (ease, linear)
+  •   iteration   → how many times (infinite = forever)
+*/
+ 
+/* ── SLIDE UP: Elements appear from below ── */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+/* ── FADE IN ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+ 
+/* ── BOUNCE IN: Used for success icon ── */
+@keyframes bounceIn {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.15); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+ 
+/* ── PULSE RING: Used on tracking timeline dot ── */
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.3); }
+  50%  { box-shadow: 0 0 0 10px rgba(108, 99, 255, 0.05); }
+  100% { box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.3); }
+}
+ 
+/* ── SPIN: Loading spinner ── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+ 
+/* ── SHIMMER: Skeleton loading effect ── */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+ 
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg3) 25%,
+    var(--bg2) 50%,
+    var(--bg3) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+ 
+/* ── FLOAT: Gentle up-and-down float ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+ 
+/* ── CARD HOVER 3D EFFECT ── */
+/* Applied by JS via inline style — see products.js */
+ 
+/* ── CANVAS BACKGROUND ── */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;           /* behind all pages */
+  pointer-events: none; /* clicks pass through */
+}
+ 
+/* ── PAGE TRANSITION ── */
+.page.active {
+  animation: fadeIn 0.3s ease;
+}
+ 
+/* ── LOADING SPINNER ── */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+ 
+/* footer */
+footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text3);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}

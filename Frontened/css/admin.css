@@ -1,0 +1,221 @@
+/*
+  ╔════════════════════════════════════════╗
+  ║  css/admin.css — Admin Dashboard      ║
+  ╚════════════════════════════════════════╝
+*/
+ 
+.admin-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ 
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+ 
+.admin-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2rem;
+}
+ 
+.admin-subtitle {
+  color: var(--text3);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+ 
+/* ── STAT CARDS GRID ── */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+ 
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: var(--transition);
+  cursor: default;
+}
+ 
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+ 
+.stat-icon { font-size: 2rem; }
+ 
+.stat-value {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+ 
+.stat-label {
+  color: var(--text3);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+ 
+/* ── PRODUCTS TABLE ── */
+.admin-products-table {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+ 
+.table-header {
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+ 
+.table-title { font-weight: 600; font-size: 1.05rem; }
+.table-count { color: var(--text3); font-size: 0.85rem; }
+ 
+/* ── ADD PRODUCT BUTTON ── */
+.add-product-btn {
+  background: linear-gradient(135deg, var(--accent3), #00b09b);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #000;
+  padding: 0.55rem 1.3rem;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+ 
+.add-product-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(67, 233, 123, 0.3);
+}
+ 
+/* ── TABLE ── */
+.table-wrap { overflow-x: auto; }   /* horizontal scroll on small screens */
+ 
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;   /* removes gaps between cells */
+}
+ 
+.admin-table th {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  font-size: 0.78rem;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+ 
+.admin-table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+ 
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+ 
+.admin-table tr:hover td {
+  background: rgba(108, 99, 255, 0.03);
+}
+ 
+.tbl-emoji { font-size: 1.4rem; margin-right: 0.5rem; vertical-align: middle; }
+ 
+/* ── LOW STOCK INDICATOR ── */
+.stock-low  { color: var(--accent2); font-weight: 700; }
+.stock-ok   { color: var(--accent3); }
+ 
+/* ── ACTION BUTTONS ── */
+.edit-btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(108, 99, 255, 0.12);
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: 'Satoshi', sans-serif;
+  transition: var(--transition);
+  margin-right: 0.4rem;
+}
+ 
+.edit-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+ 
+.del-btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 101, 132, 0.1);
+  border: 1px solid rgba(255, 101, 132, 0.2);
+  color: var(--accent2);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: 'Satoshi', sans-serif;
+  transition: var(--transition);
+}
+ 
+.del-btn:hover {
+  background: var(--accent2);
+  color: #fff;
+}
+ 
+/* ── MODAL FORM ── */
+.modal-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+ 
+.modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+ 
+.btn-save {
+  padding: 0.65rem 1.5rem;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+ 
+.btn-save:hover { background: #7c73ff; }
+ 

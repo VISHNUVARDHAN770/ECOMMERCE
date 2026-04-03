@@ -1,0 +1,139 @@
+/*
+  ╔════════════════════════════════════════╗
+  ║  css/orders.css — Order Tracking      ║
+  ╚════════════════════════════════════════╝
+*/
+ 
+.orders-page {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+ 
+.order-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: slideUp 0.4s ease;
+  transition: var(--transition);
+}
+ 
+.order-card:hover {
+  border-color: rgba(108, 99, 255, 0.25);
+}
+ 
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+ 
+.order-id {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+ 
+.order-meta {
+  font-size: 0.82rem;
+  color: var(--text3);
+  margin-top: 0.2rem;
+}
+ 
+/* ── STATUS BADGES ── */
+.order-status {
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+ 
+.status-processing       { background: rgba(255,183,77,0.15);  color: #ffb74d; }
+.status-shipped          { background: rgba(108,99,255,0.15);  color: var(--accent); }
+.status-dispatched       { background: rgba(33,150,243,0.15);  color: #42a5f5; }
+.status-out_for_delivery { background: rgba(255,101,132,0.15); color: var(--accent2); }
+.status-delivered        { background: rgba(67,233,123,0.15);  color: var(--accent3); }
+ 
+/* ── ORDER ITEMS CHIPS ── */
+.order-items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+ 
+.order-item-chip {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+ 
+/* ── TRACKING TIMELINE ── */
+.tracking-timeline {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+ 
+.timeline-step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+ 
+/* Vertical connecting line between steps */
+.timeline-step::before {
+  content: '';
+  position: absolute;
+  left: 15px;           /* center of the dot (dot width=32, 32/2=16, -1=15) */
+  top: 32px;
+  width: 2px;
+  height: calc(100% - 8px);  /* calc() = math in CSS */
+  background: var(--border);
+}
+ 
+.timeline-step:last-child::before {
+  display: none;        /* no line after last step */
+}
+ 
+/* ── TIMELINE DOT ── */
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  z-index: 1;
+}
+ 
+.timeline-dot.done    { background: var(--accent3); color: #000; }
+.timeline-dot.current {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.3);
+  animation: pulseRing 2s infinite;
+}
+.timeline-dot.pending { background: var(--bg3); border: 2px solid var(--border); color: var(--text3); }
+ 
+.timeline-content { padding-top: 0.3rem; }
+.timeline-label   { font-weight: 600; font-size: 0.9rem; }
+.timeline-label.pending { color: var(--text3); }
+.timeline-time    { font-size: 0.8rem; color: var(--text3); margin-top: 0.1rem; }
+ 

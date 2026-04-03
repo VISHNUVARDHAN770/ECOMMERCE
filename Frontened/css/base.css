@@ -1,0 +1,228 @@
+/*
+  ╔════════════════════════════════════════╗
+  ║  css/base.css                         ║
+  ║  Global reset + foundation styles     ║
+  ║  Applied to EVERY element on the page ║
+  ╚════════════════════════════════════════╝
+ 
+  KEYWORDS:
+  • *          → Universal selector (targets ALL elements)
+  • margin:0   → Removes default spacing browsers add
+  • box-sizing → border-box means padding is included
+                 inside the width (easier layouts)
+  • body       → The entire visible page
+  • .page      → CSS class for each screen/section
+  • .active    → Class added by JS to show a page
+  • display    → Controls how element is laid out
+                 none = hidden, block = visible
+*/
+ 
+/* ── RESET: Remove browser default styles ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* easier sizing — padding included in width */
+}
+ 
+/* ── BODY: Global page settings ── */
+body {
+  font-family: 'Satoshi', sans-serif;
+  background-color: var(--bg);    /* dark background from variables.css */
+  color: var(--text);             /* default text color */
+  min-height: 100vh;              /* vh = viewport height, 100vh = full screen */
+  overflow-x: hidden;             /* prevents horizontal scroll */
+  line-height: 1.6;               /* space between lines */
+}
+ 
+/* ── PAGE SYSTEM: Single-Page App navigation ── */
+/* All pages are hidden by default */
+.page {
+  display: none;    /* hidden */
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+ 
+/* Only the page with class "active" is shown */
+/* JS adds/removes this class to switch pages */
+.page.active {
+  display: block;   /* visible */
+}
+ 
+/* ── TYPOGRAPHY ── */
+h1, h2, h3 {
+  font-family: 'Clash Display', sans-serif;
+  line-height: 1.2;
+}
+ 
+/* ── SECTION HEADINGS ── */
+.section-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+ 
+.section-sub {
+  color: var(--text2);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+ 
+/* ── REUSABLE BUTTONS ── */
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  /* linear-gradient = smooth color transition at 135deg angle */
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;        /* shows hand icon on hover */
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+ 
+.btn-primary:hover {
+  transform: translateY(-2px);    /* lifts up 2px on hover */
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.4);
+}
+ 
+.btn-cancel {
+  padding: 0.6rem 1.2rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text2);
+  cursor: pointer;
+  font-family: 'Satoshi', sans-serif;
+  transition: var(--transition);
+}
+ 
+.btn-cancel:hover {
+  color: var(--text);
+  border-color: var(--text2);
+}
+ 
+/* ── FORM ELEMENTS ── */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+ 
+.form-label {
+  display: block;           /* label takes full width */
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+ 
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.95rem;
+  outline: none;            /* removes blue browser outline */
+  transition: var(--transition);
+}
+ 
+.form-input:focus {
+  /* :focus = when user clicks into input field */
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+ 
+/* ── EMPTY STATE (when no data) ── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text3);
+}
+ 
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+ 
+.empty-title {
+  font-size: 1.2rem;
+  color: var(--text2);
+  margin-bottom: 0.5rem;
+}
+ 
+/* ── TOAST NOTIFICATION ── */
+.toast {
+  position: fixed;          /* stays in place even when scrolling */
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 10000;           /* on top of everything */
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 320px;
+  transition: var(--transition);
+}
+ 
+.toast.hidden {
+  display: none;
+}
+ 
+/* ── MODAL OVERLAY ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;                 /* inset:0 = top:0 right:0 bottom:0 left:0 = full screen */
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.75);   /* semi-transparent dark overlay */
+  backdrop-filter: blur(8px);         /* blurs background */
+  align-items: center;
+  justify-content: center;
+}
+ 
+.modal-overlay.open {
+  display: flex;
+}
+ 
+.modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+ 
+/* ── SCROLLBAR STYLING ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+ 
+/* ── UTILITY CLASSES ── */
+.hidden    { display: none !important; }
+.flex      { display: flex; }
+.center    { align-items: center; justify-content: center; }
+.gap-1     { gap: 1rem; }
+.text-accent { color: var(--accent); }
+.text-muted  { color: var(--text2); }
+.fw-bold    { font-weight: 700; }
+.mt-1 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 1rem; }
