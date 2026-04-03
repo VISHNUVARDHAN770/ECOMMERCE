@@ -44,7 +44,7 @@ const app = express();
 // send requests to this backend (localhost:5000)
 // Without this, browser blocks all API calls
 app.use(cors({
-  origin: '*',   // allow requests from any origin
+  origin: 'https://ecommerce-wine-theta-16.vercel.app/',   // allow requests from any origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
