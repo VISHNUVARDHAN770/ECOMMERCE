@@ -91,13 +91,23 @@ function switchAuthTab(tab) {
 //  HANDLE LOGIN
 // ════════════════════════════════
 async function handleLogin() {
+  console.log("✅ LOGIN FUNCTION STARTED");
+
   const email = document.getElementById('login-email').value.trim().toLowerCase();
   const pass  = document.getElementById('login-password').value.trim();
 
-  if (!email || !pass) { toast('⚠️', 'Please fill in all fields'); return; }
+  console.log("📩 Email:", email);
+  console.log("🔑 Password:", pass);
+
+  if (!email || !pass) {
+    toast('⚠️', 'Please fill in all fields');
+    return;
+  }
 
   // ── ADMIN LOGIN ──
   if (email === ADMIN_EMAIL && pass === ADMIN_PASSWORD) {
+    console.log("👑 Admin login detected");
+
     window.currentUser = {
       id:    'admin',
       name:  ADMIN_NAME,
@@ -105,9 +115,6 @@ async function handleLogin() {
       role:  'admin'
     };
 
-    // KEY FIX: Save special admin token
-    // This token is recognized by backend authMiddleware.js
-    // Without this token, admin cannot add/edit/delete products
     saveToken('admin-local-token');
     localStorage.setItem('currentUser', JSON.stringify(window.currentUser));
 
@@ -118,13 +125,17 @@ async function handleLogin() {
     return;
   }
 
-  // ── REGULAR USER LOGIN ──
+  // ── USER LOGIN ──
   const btn = document.getElementById('login-btn');
   btn.textContent = 'Signing in...';
   btn.disabled    = true;
 
   try {
+    console.log("🚀 Calling API...");
+
     const data = await apiLogin(email, pass);
+
+    console.log("✅ API RESPONSE:", data);
 
     saveToken(data.token);
     window.currentUser = data.user;
@@ -139,6 +150,7 @@ async function handleLogin() {
     renderProducts();
 
   } catch (err) {
+    console.error("❌ LOGIN ERROR:", err);
     toast('❌', err.message);
   } finally {
     btn.textContent = 'Sign In →';
