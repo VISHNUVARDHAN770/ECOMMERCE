@@ -1,0 +1,50 @@
+/*
+  ╔════════════════════════════════════════════╗
+  ║  css/variables.css                        ║
+  ║  This file defines ALL colors, sizes,     ║
+  ║  fonts used across the ENTIRE project.    ║
+  ║  Change a color here → changes everywhere ║
+  ╚════════════════════════════════════════════╝
+ 
+  KEYWORDS EXPLAINED:
+  • :root      → The very top-level of the HTML page
+                 Variables defined here are GLOBAL
+                 (available in every CSS file)
+  • --name     → CSS Custom Property (variable)
+                 The "--" prefix means it's a variable
+  • var(--name)→ How you USE the variable elsewhere
+*/
+ 
+:root {
+ 
+  /* ── BACKGROUND COLORS ── */
+  --bg:       #0a0a0f;   /* darkest background (page bg) */
+  --bg2:      #111118;   /* slightly lighter background */
+  --bg3:      #1a1a24;   /* input fields, secondary bg */
+  --card:     #16161f;   /* card backgrounds */
+  --border:   #2a2a3a;   /* all border lines */
+ 
+  /* ── ACCENT / BRAND COLORS ── */
+  --accent:   #6c63ff;   /* main purple brand color */
+  --accent2:  #ff6584;   /* pink — used for errors, badges */
+  --accent3:  #43e97b;   /* green — success, discounts */
+  --gold:     #ffd700;   /* star ratings */
+ 
+  /* ── TEXT COLORS ── */
+  --text:     #f0f0ff;   /* primary text (white-ish) */
+  --text2:    #9090b0;   /* secondary text (gray) */
+  --text3:    #5a5a7a;   /* placeholder / disabled text */
+ 
+  /* ── SPACING & SHAPE ── */
+  --radius:   16px;      /* border-radius for cards */
+  --radius-sm: 8px;      /* border-radius for small items */
+  --radius-lg: 24px;     /* border-radius for large cards */
+ 
+  /* ── SHADOWS ── */
+  --shadow:   0 8px 32px rgba(108, 99, 255, 0.15);
+  --shadow-lg:0 20px 60px rgba(108, 99, 255, 0.25);
+ 
+  /* ── TRANSITIONS ── */
+  --transition: all 0.25s ease;
+  --transition-slow: all 0.4s ease;
+}

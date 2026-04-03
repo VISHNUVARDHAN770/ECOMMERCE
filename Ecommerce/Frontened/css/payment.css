@@ -1,0 +1,212 @@
+/*
+  ╔════════════════════════════════════════╗
+  ║  css/payment.css                      ║
+  ╚════════════════════════════════════════╝
+*/
+ 
+.payment-page {
+  padding: 2rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+ 
+.payment-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  animation: slideUp 0.4s ease;
+}
+ 
+.payment-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+ 
+.payment-amount {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  font-family: 'Clash Display', sans-serif;
+}
+ 
+/* ── PAYMENT METHOD TABS ── */
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+ 
+.payment-method {
+  padding: 1rem 1.2rem;
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+ 
+.payment-method:hover {
+  border-color: rgba(108, 99, 255, 0.4);
+}
+ 
+/* Highlighted when selected */
+.payment-method.selected {
+  border-color: var(--accent);
+  background: rgba(108, 99, 255, 0.08);
+}
+ 
+.pm-icon { font-size: 1.5rem; }
+.pm-label { font-weight: 600; font-size: 0.95rem; }
+.pm-sub { font-size: 0.8rem; color: var(--text3); margin-top: 0.1rem; }
+ 
+/* ── PAYMENT DETAIL FORMS ── */
+/* Each form shown only when method is selected */
+.payment-form { margin-top: 0; }
+ 
+/* ── CARD VISUAL PREVIEW ── */
+.card-visual {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 150px;
+}
+ 
+/* decorative circles on card */
+.card-visual::before,
+.card-visual::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+ 
+.card-visual::before {
+  width: 120px;
+  height: 120px;
+  top: -30px;
+  right: -30px;
+}
+ 
+.card-visual::after {
+  width: 80px;
+  height: 80px;
+  bottom: -20px;
+  left: 30px;
+}
+ 
+.card-bank { font-size: 0.78rem; opacity: 0.7; font-weight: 600; letter-spacing: 0.1em; }
+.card-number-display {
+  letter-spacing: 0.18em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.8rem 0 1.2rem;
+  font-family: 'Courier New', monospace;  /* monospace = fixed-width font */
+}
+ 
+.card-details-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+ 
+.card-field-label {
+  font-size: 0.65rem;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+ 
+/* ── CARD INPUT GRID ── */
+.card-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+ 
+.card-inputs .full-width {
+  grid-column: 1 / -1;   /* spans all columns */
+}
+ 
+/* ── NET BANKING SELECT ── */
+.bank-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+}
+ 
+.bank-select option {
+  background: var(--bg3);
+}
+ 
+/* ── COD NOTICE BOX ── */
+.cod-notice {
+  background: rgba(67, 233, 123, 0.08);
+  border: 1px solid rgba(67, 233, 123, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+ 
+.cod-notice-title { font-weight: 600; margin-bottom: 0.4rem; }
+.cod-notice-desc { font-size: 0.87rem; color: var(--text2); }
+ 
+/* ── SUCCESS PAGE ── */
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+ 
+.success-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  max-width: 460px;
+  animation: slideUp 0.5s ease;
+}
+ 
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounceIn 0.8s ease;
+  display: block;
+}
+ 
+.success-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+ 
+.success-order-id {
+  background: var(--bg3);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1.2rem;
+  font-family: 'Clash Display', sans-serif;
+  color: var(--accent);
+  margin: 1.2rem 0 1.5rem;
+  font-size: 1rem;
+}
