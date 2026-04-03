@@ -27,14 +27,7 @@
 //  All API calls go to this address
 //  Your backend server.js runs here
 // ════════════════════════════════
-const isLocal = window.location.hostname === 'localhost' ||
-                window.location.hostname === '127.0.0.1';
-
-const API_URL = isLocal
-  ? 'http://localhost:5000/api'
-  : 'https://eassybuy-backend.onrender.com/api';
-
-
+const API_URL = "https://eassybuy-backend.onrender.com/api";
 // ════════════════════════════════
 //  TOKEN HELPERS
 //  JWT token is saved in browser
