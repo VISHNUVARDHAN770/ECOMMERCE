@@ -28,6 +28,8 @@
 //  Your backend server.js runs here
 // ════════════════════════════════
 const API_URL = "https://eassybuy-backend.onrender.com/api";
+
+console.log("🔥 USING API:", API_URL);
 // ════════════════════════════════
 //  TOKEN HELPERS
 //  JWT token is saved in browser
