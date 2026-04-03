@@ -72,24 +72,15 @@ function removeToken() {
 // ════════════════════════════════
 async function apiCall(endpoint, method, body, requiresAuth) {
 
-  // Default values
   method       = method       || 'GET';
   body         = body         || null;
   requiresAuth = requiresAuth || false;
 
-  // Build the request options object
   var options = {
     method: method,
-    headers: {
-      'Content-Type': 'application/json'
-      // Content-Type: application/json tells the server
-      // that we are sending JSON formatted data
-    }
+    headers: { 'Content-Type': 'application/json' }
   };
 
-  // If this route needs login, add the JWT token
-  // Token goes in the Authorization header
-  // Format: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
   if (requiresAuth) {
     var token = getToken();
     if (!token) {
@@ -98,30 +89,32 @@ async function apiCall(endpoint, method, body, requiresAuth) {
     options.headers['Authorization'] = 'Bearer ' + token;
   }
 
-  // If there is data to send (POST or PUT requests),
-  // convert it to JSON string and add to request body
   if (body) {
     options.body = JSON.stringify(body);
-    // JSON.stringify converts JS object to JSON string
-    // { name: "Sony" } → '{"name":"Sony"}'
   }
 
-  // Send the HTTP request to the backend server
-  // fetch() returns a Promise — await waits for it
-  var response = await fetch(API_URL + endpoint, options);
+  try {
+    var response = await fetch(API_URL + endpoint, options);
+    var data     = await response.json();
 
-  // Parse the JSON response from the server
-  // .json() also returns a Promise — await waits for it
-  var data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message || 'Something went wrong on the server');
+    }
 
-  // If server returned an error (status 400, 401, 404, 500 etc.)
-  // throw the error message so the calling function can handle it
-  if (!response.ok) {
-    throw new Error(data.message || 'Something went wrong on the server');
+    return data;
+
+  } catch (err) {
+    // Render free tier sleeps after 15 min inactivity
+    // When waking up, fetch throws "Failed to fetch"
+    // Show a friendly message instead
+    if (err.name === 'TypeError' ||
+        String(err.message).includes('Failed to fetch') ||
+        String(err.message).includes('NetworkError') ||
+        String(err.message).includes('fetch')) {
+      throw new Error('Server is starting up, please wait 30 seconds and try again 🔄');
+    }
+    throw err;
   }
-
-  // Success — return the data to the calling function
-  return data;
 }
 
 
